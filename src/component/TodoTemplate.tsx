@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import TodoHeader from './TodoHeader';
 
+/** style */
 const TodoTemplateBlock = styled.div`
-    width: 360px;
-    height: 740px;
+    width: 512px;
+    height: 768px;
 
     position: relative;
     background: white;
@@ -18,9 +20,14 @@ const TodoTemplateBlock = styled.div`
     flex-direction: column;
 `;
 
-const TodoTemplate = () => {
+/** interface */
+interface Props {
+    children?: React.ReactNode;
+}
+
+const TodoTemplate = ({children} : any) => {
     return (
-        <TodoTemplateBlock />
+        <TodoTemplateBlock>{children}</TodoTemplateBlock>
     );
 };
 
