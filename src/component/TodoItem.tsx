@@ -2,6 +2,10 @@ import React from 'react'
 import styled, {css} from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
 
+interface IProps {
+  done?: boolean;
+}
+
 /** style */
 const Remove = styled.div`
   display: flex;
@@ -28,7 +32,7 @@ const TodoItemBlock = styled.div`
   }
 `;
 
-const CheckCircle = styled.div`
+const CheckCircle = styled.div<IProps>`
   width: 32px;
   height: 32px;
   border-radius: 16px;
@@ -47,7 +51,7 @@ const CheckCircle = styled.div`
     `}
 `;
 
-const Text = styled.div`
+const Text = styled.div<IProps>`
   flex: 1;
   font-size: 21px;
   color: #495057;
@@ -58,7 +62,7 @@ const Text = styled.div`
     `}
 `;
 
-/** interface */
+/** interface TODO 필수값 세팅 확인*/
 interface Props {
     id?: string;
     done?: boolean;

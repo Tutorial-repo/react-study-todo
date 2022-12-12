@@ -2,7 +2,12 @@ import React, { useState } from 'react'
 import {MdAdd} from 'react-icons/md';
 import styled, {css} from 'styled-components';
 
-const CircleButton = styled.button`
+/** interface */
+interface IProps{
+    open?: boolean;
+}
+
+const CircleButton = styled.button<IProps>`
     background: #38d9a9;
     &:hover {
         background: #63e6be;

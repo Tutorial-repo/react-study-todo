@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTodoState } from './../hooks/TodoContext';
 
 /** style */
 const TodoHeadBlock = styled.div`
@@ -38,7 +39,7 @@ const TodoHeader = () => {
         <TodoHeadBlock>
             <h1>2022년 12월 12일</h1>
             <div className='day'>월요일</div>
-            <div className='tasks-left'>TEST</div>
+            <div className='tasks-left'>목록 1개 남음</div>
         </TodoHeadBlock>
     );
 };
