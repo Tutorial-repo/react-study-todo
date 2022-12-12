@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, {css} from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
+import { useTodoDispatch } from './../hooks/TodoContext';
 
 interface IProps {
   done?: boolean;
@@ -64,21 +65,29 @@ const Text = styled.div<IProps>`
 
 /** interface TODO 필수값 세팅 확인*/
 interface Props {
-    id?: string;
-    done?: boolean;
-    text?: string;
+  id: number;
+  text: string;
+  done: boolean;
 }
 
-function TodoItem({id, done, text}: Props) {
-    return (
-        <TodoItemBlock>
-            <CheckCircle done={done}>{done && <MdDone/>}</CheckCircle>
-            <Text done={done}>{text}</Text>
-            <Remove>
-                <MdDelete/>
-            </Remove>
-        </TodoItemBlock>
-    )
+function TodoItem({id, text, done}: Props) {
+  const dispatch = useTodoDispatch();
+  const onToggle = () => dispatch({type: 'TOGGLE', id});
+  const onRemove = () => dispatch({type: 'REMOVE', id});
+
+  return (
+    <TodoItemBlock>
+        <CheckCircle done={done} onClick={onToggle}>
+          {done && <MdDone/>}
+        </CheckCircle>
+        <Text done={done}>
+          {text}
+        </Text>
+        <Remove onClick={onRemove}>
+            <MdDelete/>
+        </Remove>
+    </TodoItemBlock>
+  )
 }
 
-export default TodoItem;
+export default React.memo(TodoItem);
