@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {MdAdd} from 'react-icons/md';
 import styled, {css} from 'styled-components';
+import { useTodoDispatch } from './../hooks/TodoContext';
 
 /** interface */
 interface IProps{
@@ -85,15 +86,31 @@ interface Props{
 
 function TodoCreate({}: Props) {
     const [open, setOpen] = useState(false);
+    const [value, setValue] = useState('');
 
+    //Context
+    const dispatch = useTodoDispatch();
+
+    //Event Listener
     const onToggle = () => setOpen(!open);
-    
+    const onChange = (e : any) => setValue(e.target.value);
+    const onSubmit = (e : any) => {
+        e.preventDefault();
+        dispatch({
+            type: 'CREATE',
+            text: value,
+        });
+
+        setValue('');
+        setOpen(false);
+    } ;
+
     return (
         <>
             {open && (
                 <InsertFormPositioner>
-                    <InsertForm>
-                        <Input autoFocus placeholder='입력 후, Enter를 누르세요'></Input>
+                    <InsertForm onSubmit={onSubmit}>
+                        <Input onChange={onChange} autoFocus placeholder='입력 후, Enter를 누르세요'></Input>
                     </InsertForm>
                 </InsertFormPositioner>
             )}

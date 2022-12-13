@@ -64,7 +64,6 @@ const todoReducer = (state : State, action: Action): State => {
 
 const TodoStateContext = createContext<State>(initialTodos);
 const TodoDispatchContext = createContext<TodosDispatch>(() => null);
-const TodoNextIdContext = createContext({});
 
 //chilren = React.ReactNode
 function TodoContext({children}: { children: React.ReactNode }) {
@@ -74,9 +73,7 @@ function TodoContext({children}: { children: React.ReactNode }) {
     return (
         <TodoStateContext.Provider value={state}>
             <TodoDispatchContext.Provider value={dispatch}>
-                <TodoNextIdContext.Provider value={nextId}>
                     {children}
-                </TodoNextIdContext.Provider>
             </TodoDispatchContext.Provider>
         </TodoStateContext.Provider>
     )
@@ -88,6 +85,5 @@ export const useTodoDispatch = () => {
     if (!dispatch) throw new Error('TodosProvider not found');
     return dispatch;
 };
-export const useTodoNextId = () => useContext(TodoNextIdContext);
 
 export default TodoContext;
