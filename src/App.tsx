@@ -5,6 +5,7 @@ import TodoTemplate from '../src/component/TodoTemplate';
 import TodoList from "./component/TodoList";
 import TodoCreate from './component/TodoCreate';
 import TodoContext from './hooks/TodoContext';
+import Users from "./component/user/Users";
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -14,14 +15,7 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
     return ( 
-        <TodoContext>
-            <GlobalStyle />
-            <TodoTemplate>
-                <TodoHeader />
-                <TodoList />
-                <TodoCreate />
-            </TodoTemplate>
-        </TodoContext>
+        <Users />
     );
 };
 
