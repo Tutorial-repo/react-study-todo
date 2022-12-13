@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-import TodoItem from './Todoitem';
+import TodoItem from './TodoItem';
+import { useTodoState, useTodoDispatch } from './../hooks/TodoContext';
 
 /** style */
 const TodoListBlock = styled.div`
@@ -16,12 +17,20 @@ interface Props {
 }
 
 function TodoList() {
-    return (
-      <TodoListBlock>
-        <TodoItem text="프로젝트 생성하기" done={true} />
-        <TodoItem text="Context 만들기" done={false} />
-      </TodoListBlock>
-    )
+  const todoList = useTodoState();
+
+  return (
+    <TodoListBlock>
+      {todoList.map(todo => 
+        <TodoItem 
+          key={todo.id}
+          id={todo.id}
+          text={todo.text}
+          done={todo.done} 
+        />
+      )}
+    </TodoListBlock>
+  )
 }
 
 export default TodoList;

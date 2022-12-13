@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTodoState } from './../hooks/TodoContext';
 
 /** style */
 const TodoHeadBlock = styled.div`
@@ -26,21 +27,26 @@ const TodoHeadBlock = styled.div`
   }
 `;
 
-/** interface */
-interface HeaderProps {
-    date: string;
-    day: string;
-    todo: number;
-};
-
 const TodoHeader = () => {
-    return (
-        <TodoHeadBlock>
-            <h1>2022년 12월 12일</h1>
-            <div className='day'>월요일</div>
-            <div className='tasks-left'>TEST</div>
-        </TodoHeadBlock>
-    );
+  const todoList = useTodoState();
+  const todoCount = todoList.filter(todo=> !todo.done).length;
+
+  const today = new Date();
+  const dateString = today.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+  const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
+
+
+  return (
+      <TodoHeadBlock>
+          <h1>{dateString}</h1>
+          <div className='day'>{dayName}</div>
+          <div className='tasks-left'>할 일 목록 {todoCount}개 남음</div>
+      </TodoHeadBlock>
+  );
 };
 
 export default TodoHeader;
