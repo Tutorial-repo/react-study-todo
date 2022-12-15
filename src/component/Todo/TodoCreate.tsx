@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {MdAdd} from 'react-icons/md';
 import styled, {css} from 'styled-components';
-import { useTodoDispatch } from './../hooks/TodoContext';
+import { useTodoDispatch } from '../../hooks/TodoContext';
 
 /** interface */
 interface IProps{

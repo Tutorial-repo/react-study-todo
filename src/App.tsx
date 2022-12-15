@@ -1,11 +1,10 @@
 import React from "react";
 import { createGlobalStyle } from 'styled-components';
-import TodoHeader from './component/TodoHeader';
-import TodoTemplate from '../src/component/TodoTemplate';
-import TodoList from "./component/TodoList";
-import TodoCreate from './component/TodoCreate';
+import TodoHeader from './component/Todo/TodoHeader';
+import TodoTemplate from '../src/component/Todo/TodoTemplate';
+import TodoList from "./component/Todo/TodoList";
+import TodoCreate from './component/Todo/TodoCreate';
 import TodoContext from './hooks/TodoContext';
-import Users from "./component/user/Users";
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -15,7 +14,14 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
     return ( 
-        <Users />
+        <TodoContext>
+            <GlobalStyle />
+            <TodoTemplate>
+                <TodoHeader />
+                <TodoList />
+                <TodoCreate />
+            </TodoTemplate>
+        </TodoContext>
     );
 };
 
