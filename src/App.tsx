@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 import Home from './pages/Home';
 import About from './pages/About';
 import Profiles from './component/Profile/Profiles';
+import Footer from './component/Profile/Footer';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -25,6 +26,8 @@ const App = () => {
                         <Link to="/profiles">Profiles</Link>
                     </li>
                 </ul>
+                <hr />
+                <Footer />
                 <hr />
                 <Routes>
                     <Route path="/" element={<Home/>} />
