@@ -1,0 +1,14 @@
+import React from 'react'
+
+type Props = {}
+
+const Home = (props: Props) : JSX.Element => {
+  return (
+    <div>
+        <h1>Home</h1>
+        <p>이곳은 홈이에요. 가장 먼저 보여지는 페이지죠.</p>
+    </div>
+  )
+}
+
+export default Home;
