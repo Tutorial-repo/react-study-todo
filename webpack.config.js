@@ -7,7 +7,9 @@ module.exports = {
   mode: "development",
   devtool: "eval", //prod : hidden-source-map
   devServer: {
+    hot: true,
     port: 3001,
+    historyApiFallback: true,
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
