@@ -1,6 +1,8 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 
+import CounterContainer from './component/Counter/CounterContainer';
+
 import TodoHeader from './component/Todo/TodoHeader';
 import TodoTemplate from '../src/component/Todo/TodoTemplate';
 import TodoList from "./component/Todo/TodoList";
@@ -38,14 +40,17 @@ const App = () => {
             //     </Routes>
             // </div>
 
-            <TodoContext>
-                <GlobalStyle />
-                <TodoTemplate>
-                    <TodoHeader />
-                    <TodoList />
-                    <TodoCreate />
-                </TodoTemplate>
-            </TodoContext>
+            // <TodoContext>
+            //     <GlobalStyle />
+            //     <TodoTemplate>
+            //         <TodoHeader />
+            //         <TodoList />
+            //         <TodoCreate />
+            //     </TodoTemplate>
+            // </TodoContext>
+            <div>
+                <CounterContainer />
+            </div>
     );
 };
 
